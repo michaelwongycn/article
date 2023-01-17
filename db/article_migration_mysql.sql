@@ -1,0 +1,11 @@
+CREATE TABLE `article` (
+  `ID`      INT(11) NOT NULL,
+  `author`  TEXT NOT NULL,
+  `title`   TEXT NOT NULL,
+  `body`    TEXT NOT NULL,
+  `created` DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+ALTER TABLE `article`
+  ADD PRIMARY KEY (`id`),
+  MODIFY `ID` INT(11) NOT NULL AUTO_INCREMENT;
