@@ -9,9 +9,9 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
-	"github.com/michaelwongycn/article/api/handler"
-	repository "github.com/michaelwongycn/article/infrastructure/repository/article"
-	usecase "github.com/michaelwongycn/article/service/article"
+	"github.com/michaelwongycn/article/articleCommand/api/handler"
+	repository "github.com/michaelwongycn/article/articleCommand/infrastructure/repository/article"
+	usecase "github.com/michaelwongycn/article/articleCommand/service/article"
 )
 
 func loadDB() (*sql.DB, error) {
@@ -46,7 +46,7 @@ func main() {
 
 	handler.MakeMakeArticleHandlers(articleRouter, articleService)
 
-	err = http.ListenAndServe("localhost:8000", r)
+	err = http.ListenAndServe("localhost:8001", r)
 	fmt.Println("Runnning")
 	if err != nil {
 		fmt.Println(err.Error())

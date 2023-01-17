@@ -1,7 +1,7 @@
 package usecase
 
 import (
-	"github.com/michaelwongycn/article/entity"
+	"github.com/michaelwongycn/article/articleCommand/entity"
 )
 
 type Service struct {
@@ -26,12 +26,4 @@ func (s *Service) CreateArticle(author, title, body string) (*entity.Article, er
 	article.ID = ID
 
 	return article, nil
-}
-
-func (s *Service) ReadArticles(author, keyword string) ([]*entity.Article, error) {
-	return s.repo.ReadArticles(author, keyword)
-}
-
-func (s *Service) ReadArticlesFC() ([]*entity.Article, error) {
-	return s.repo.ReadArticlesFC()
 }

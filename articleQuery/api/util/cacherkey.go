@@ -2,17 +2,20 @@ package util
 
 import (
 	"fmt"
+	"time"
 
-	"github.com/michaelwongycn/article/entity"
+	"github.com/michaelwongycn/article/articleQuery/entity"
 	"github.com/patrickmn/go-cache"
 )
 
-func SetArticleCacheByKey(author, keyword string, data []*entity.Article) {
+var Cache = cache.New(5*time.Minute, 5*time.Minute)
+
+func SetArticleCache(author, keyword string, data []*entity.Article) {
 	fmt.Println("Write Cache")
 	Cache.Set(author+"~"+keyword, data, cache.NoExpiration)
 }
 
-func GetArticleCacheByKey(author, keyword string) ([]*entity.Article, bool) {
+func GetArticleCache(author, keyword string) ([]*entity.Article, bool) {
 	var articles []*entity.Article
 	data, found := Cache.Get(author + "~" + keyword)
 
